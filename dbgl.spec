@@ -77,8 +77,6 @@ Categories=Utility;
 EOF
 
 
-%clean
-rm -rf %{buildroot}
 
 %files
 %defattr(755, root, root)
@@ -89,5 +87,8 @@ rm -rf %{buildroot}
 
 
 %changelog
+* Wed Dec 10  2014 Oleg Kishinskiy <legunt@yandex.ru> - 0.78-1
+ - Update for new vertion
+
 * Mon Jul 29 2013 David Vásquez <davidjeremias82 AT gmail DOT com> - 0.76-2
 - Initial build rpm 
