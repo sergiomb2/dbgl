@@ -20,7 +20,7 @@ Requires:		jpackage-utils
 Requires:		SDL_net
 Requires:		SDL_sound
 BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Source0:		http://members.quicknet.nl/blankendaalr/dbgl/download/%{name}076_generic.tar.gz
+Source0:		http://members.quicknet.nl/blankendaalr/dbgl/download/%{name}078_generic.tar.gz
 Source2:		dbgl.png
 Source3:		dbgl
 
