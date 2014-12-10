@@ -1,0 +1,25 @@
+#!/bin/sh
+myShareDir=/usr/share/java/dbgl/
+myHomeDir=~/.dbgl
+PROGRAMA=dosbox
+
+# creates a local working directory in user-home
+
+if [ ! -d $myHomeDir ] || [ ! -f $myHomeDir/dbgl.jar ]; then
+rm -rf $myHomeDir
+echo "creating local working directory $myHomeDir ..."
+mkdir -p $myHomeDir
+mkdir -p $myHomeDir/DOSBox-0.74
+cd $myShareDir
+cp -af * $myHomeDir
+ln -s /usr/bin/dosbox $myHomeDir/DOSBox-0.74/
+
+/usr/bin/dosbox
+
+ln -s $HOME/.dosbox/dosbox-*.conf $myHomeDir/DOSBox-0.74/dosbox.conf
+	fi
+
+
+cd $myHomeDir
+
+java -jar dbgl.jar
