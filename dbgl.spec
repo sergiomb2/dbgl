@@ -5,7 +5,7 @@ Group:			Applications/Multimedia
 Version:		0.78
 Release:		1%{?dist}
 BuildArch:		noarch
-License:		GPL
+License:		GPLv2
 BuildRequires:	eclipse-swt
 BuildRequires:	hsqldb
 BuildRequires:	jpackage-utils
@@ -79,7 +79,6 @@ EOF
 
 
 %files
-%defattr(755, root, root)
 %{_bindir}/%{name}
 %{_javadir}/%{name}
 %{_datadir}/pixmaps/*.png
