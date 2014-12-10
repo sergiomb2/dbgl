@@ -20,7 +20,7 @@ Requires:		java >= 1.5
 Requires:		jpackage-utils
 Requires:		SDL_net
 Requires:		SDL_sound
-Source0:		http://members.quicknet.nl/blankendaalr/dbgl/download/%{name}078_generic.tar.gz
+Source0:		http://members.quicknet.nl/blankendaalr/dbgl/download/src078.zip
 Source2:		%{name}.png
 Source3:		%{name}
 
@@ -36,7 +36,10 @@ the interface is still quite rough around the edges.
 %setup -c
 
 %build
-# Nothing to build
+ant
+mkdir build
+cd build
+tar -xf ../dist/dbgl078_generic.tar.gz
 
 %install
 
