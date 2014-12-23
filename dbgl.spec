@@ -62,7 +62,6 @@ install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/
 mkdir -p %{buildroot}%{_datadir}/applications
 cat > %{buildroot}%{_datadir}/applications/%{name}.desktop <<EOF
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
 Exec=dbgl
 Icon=dbgl
