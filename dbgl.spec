@@ -1,5 +1,5 @@
 Name:			DBGL
-Summary:		%{name} - DOSBox Game Launcher
+Summary:	DOSBox Game Launcher
 URL:			http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
 Version:		0.78
 Release:		3%{?dist}
