@@ -1,27 +1,26 @@
+%global realver 078
 Name:           dbgl
 Summary:        DOSBox Game Launcher
 URL:            http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
-Version:        0.78
-Release:        4%{?dist}
+Version:        %{realver}
+Release:        5%{?dist}
 BuildArch:      noarch
 License:        GPLv2
 BuildRequires:  eclipse-swt
 BuildRequires:  hsqldb
 BuildRequires:  jpackage-utils
-BuildRequires:  p7zip
 BuildRequires:  unzip
 BuildRequires:  xerces-j2
 BuildRequires:  liboil
 BuildRequires:  desktop-file-utils
 BuildRequires:  ant
 Requires:       dosbox >= 0.70
-Requires:       eclipse-swt
 Requires:       hsqldb
 Requires:       java >= 1:1.7.0
 Requires:       jpackage-utils
 Requires:       SDL_net
 Requires:       SDL_sound
-Source0:        http://members.quicknet.nl/blankendaalr/dbgl/download/src078.zip
+Source0:        http://members.quicknet.nl/blankendaalr/dbgl/download/src%{realver}.zip
 Source1:        %{name}.desktop
 Source2:        %{name}.png
 Source3:        %{name}
@@ -35,11 +34,11 @@ the product is somewhat usable as it is. Please bear in mind that
 the interface is still quite rough around the edges.
 
 %prep
-%setup -c
+%setup -q -c
 
 %build
 ant
-tar -xf ./dist/dbgl078_generic.tar.gz
+tar -xf ./dist/dbgl%{realver}_generic.tar.gz
 
 %install
 
@@ -73,6 +72,11 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Tue Dec 23 2014 Oleg Kishinskiy <legunt@yandex.ru> - 0.78-5
+- add global parametr realver
+- remove BuildRequires:  p7zip, Requires: eclipse-swt
+- change %setup -q -c
+
 * Tue Dec 23 2014 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 0.78-4
 - separate desktop
 - fix perms in bindir

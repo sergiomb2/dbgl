@@ -4,5 +4,5 @@ Exec=dbgl
 Icon=dbgl
 Terminal=false
 Name=DOSBox Game Launcher
-Comment=DOSBox Game Launcher
+Comment=Java front-end for DOSBox
 Categories=Utility;
