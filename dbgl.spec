@@ -1,8 +1,8 @@
 Name:			dbgl
-Summary:	        DOSBox Game Launcher
+Summary:		DOSBox Game Launcher
 URL:			http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
 Version:		0.78
-Release:		3%{?dist}
+Release:		4%{?dist}
 BuildArch:		noarch
 License:		GPLv2
 BuildRequires:	eclipse-swt
@@ -12,16 +12,16 @@ BuildRequires:	p7zip
 BuildRequires:	unzip
 BuildRequires:	xerces-j2
 BuildRequires:	liboil
-BuildRequires: desktop-file-utils
+BuildRequires:	desktop-file-utils
 Requires:		dosbox >= 0.70
 Requires:		eclipse-swt
 Requires:		hsqldb
-Requires:               java >= 1:1.7.0
-Requires:               java-headless >= 1:1.7.0
+Requires:		java >= 1:1.7.0
 Requires:		jpackage-utils
 Requires:		SDL_net
 Requires:		SDL_sound
 Source0:		http://members.quicknet.nl/blankendaalr/dbgl/download/src078.zip
+Source1:		%{name}.desktop
 Source2:		%{name}.png
 Source3:		%{name}
 
@@ -60,17 +60,9 @@ install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/
 
 # menu
 mkdir -p %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/%{name}.desktop <<EOF
-[Desktop Entry]
-Type=Application
-Exec=dbgl
-Icon=dbgl
-Terminal=false
-Name=DOSBox Game Launcher
-Comment=%{summary}
-Categories=Utility;
-EOF
+desktop-file-install %{SOURCE1} --dir %{buildroot}%{_datadir}/applications
 
+%check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
@@ -80,6 +72,10 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Tue Dec 23 2014 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 0.78-4
+- separate desktop
+- fix perms in bindir
+
 * Tue Dec 23 2014 Oleg Kishinskiy <legunt@yandex.ru> - 0.78-3
 - fix spec to install from source
 
