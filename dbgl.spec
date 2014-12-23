@@ -2,7 +2,7 @@ Name:			dbgl
 Summary:		DBGL - DOSBox Game Launcher
 URL:			http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
 Version:		0.78
-Release:		2%{?dist}
+Release:		3%{?dist}
 BuildArch:		noarch
 License:		GPLv2
 BuildRequires:	eclipse-swt
@@ -37,15 +37,17 @@ the interface is still quite rough around the edges.
 
 %build
 ant
-mkdir build
-cd build
-tar -xf ../dist/dbgl078_generic.tar.gz
+tar -xf ./dist/dbgl078_generic.tar.gz
 
 %install
 
 # jars
 install -dm 755 %{buildroot}%{_javadir}/%{name}/
-cp -af * %{buildroot}/%{_javadir}/%{name}/
+copy_files="captures COPYING db dbgl dbgl.jar dbgl.png dosroot export lib profiles templates xsl"
+for files in $copy_files
+do 
+cp -af $files %{buildroot}/%{_javadir}/%{name}/
+done
 
 # startscript
 mkdir -p %{buildroot}%{_bindir}
@@ -79,6 +81,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Tue Dec 23 2014 Oleg Kishinskiy <legunt@yandex.ru> - 0.78-3
+- fix spec to install from source
+
 * Wed Dec 10 2014 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 0.78-2
 - spec cleanup
 
