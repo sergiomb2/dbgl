@@ -1,30 +1,30 @@
-Name:			dbgl
-Summary:		DOSBox Game Launcher
-URL:			http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
-Version:		0.78
-Release:		4%{?dist}
-BuildArch:		noarch
-License:		GPLv2
-BuildRequires:	eclipse-swt
-BuildRequires:	hsqldb
-BuildRequires:	jpackage-utils
-BuildRequires:	p7zip
-BuildRequires:	unzip
-BuildRequires:	xerces-j2
-BuildRequires:	liboil
-BuildRequires:	desktop-file-utils
-BuildRequires:	ant
-Requires:		dosbox >= 0.70
-Requires:		eclipse-swt
-Requires:		hsqldb
-Requires:		java >= 1:1.7.0
-Requires:		jpackage-utils
-Requires:		SDL_net
-Requires:		SDL_sound
-Source0:		http://members.quicknet.nl/blankendaalr/dbgl/download/src078.zip
-Source1:		%{name}.desktop
-Source2:		%{name}.png
-Source3:		%{name}
+Name:           dbgl
+Summary:        DOSBox Game Launcher
+URL:            http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
+Version:        0.78
+Release:        4%{?dist}
+BuildArch:      noarch
+License:        GPLv2
+BuildRequires:  eclipse-swt
+BuildRequires:  hsqldb
+BuildRequires:  jpackage-utils
+BuildRequires:  p7zip
+BuildRequires:  unzip
+BuildRequires:  xerces-j2
+BuildRequires:  liboil
+BuildRequires:  desktop-file-utils
+BuildRequires:  ant
+Requires:       dosbox >= 0.70
+Requires:       eclipse-swt
+Requires:       hsqldb
+Requires:       java >= 1:1.7.0
+Requires:       jpackage-utils
+Requires:       SDL_net
+Requires:       SDL_sound
+Source0:        http://members.quicknet.nl/blankendaalr/dbgl/download/src078.zip
+Source1:        %{name}.desktop
+Source2:        %{name}.png
+Source3:        %{name}
 
 %description
 DBGL is a Java front-end for DOSBox, based largely upon the proven
