@@ -71,7 +71,6 @@ Comment=%{summary}
 Categories=Utility;
 EOF
 
-%check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %files
