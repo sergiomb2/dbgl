@@ -1,5 +1,5 @@
 Name:			dbgl
-Summary:	DOSBox Game Launcher
+Summary:	        DOSBox Game Launcher
 URL:			http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
 Version:		0.78
 Release:		3%{?dist}
@@ -16,8 +16,8 @@ BuildRequires: desktop-file-utils
 Requires:		dosbox >= 0.70
 Requires:		eclipse-swt
 Requires:		hsqldb
-Requires:   java >= 1:1.7.0
-Requires:   java-headless >= 1:1.7.0
+Requires:               java >= 1:1.7.0
+Requires:               java-headless >= 1:1.7.0
 Requires:		jpackage-utils
 Requires:		SDL_net
 Requires:		SDL_sound
