@@ -13,7 +13,7 @@ BuildRequires:	unzip
 BuildRequires:	xerces-j2
 BuildRequires:	liboil
 BuildRequires:	desktop-file-utils
-BuildRequires:  ant
+BuildRequires:	ant
 Requires:		dosbox >= 0.70
 Requires:		eclipse-swt
 Requires:		hsqldb
