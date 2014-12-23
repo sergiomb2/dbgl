@@ -16,7 +16,7 @@ BuildRequires: desktop-file-utils
 Requires:		dosbox >= 0.70
 Requires:		eclipse-swt
 Requires:		hsqldb
-Requires:		java >= 1.5
+Requires:		java >= 1.7
 Requires:		jpackage-utils
 Requires:		SDL_net
 Requires:		SDL_sound
