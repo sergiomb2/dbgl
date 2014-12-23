@@ -44,7 +44,7 @@ tar -xf ./dist/dbgl078_generic.tar.gz
 
 # jars
 install -dm 755 %{buildroot}%{_javadir}/%{name}/
-copy_files="captures db dbgl dbgl.jar dbgl.png dosroot export lib profiles templates xsl"
+copy_files="captures db  dbgl.jar  dosroot export lib profiles templates xsl"
 for files in $copy_files
 do 
 cp -af $files %{buildroot}/%{_javadir}/%{name}/
