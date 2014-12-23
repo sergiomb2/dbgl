@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Exec=dbgl
+Icon=dbgl
+Terminal=false
+Name=DOSBox Game Launcher
+Comment=DOSBox Game Launcher
+Categories=Utility;
