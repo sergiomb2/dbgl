@@ -2,7 +2,7 @@
 Name:           dbgl
 Summary:        DOSBox Game Launcher
 URL:            http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
-Version:        %{realver}
+Version:        0.78
 Release:        5%{?dist}
 BuildArch:      noarch
 License:        GPLv2
