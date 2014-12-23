@@ -52,7 +52,7 @@ done
 
 # startscript
 mkdir -p %{buildroot}%{_bindir}
-install -m 644 %{SOURCE3} %{buildroot}%{_bindir}
+install -m 775 %{SOURCE3} %{buildroot}%{_bindir}
 
 # icons
 mkdir %{buildroot}%{_datadir}/pixmaps
