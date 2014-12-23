@@ -75,7 +75,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 * Tue Dec 23 2014 Oleg Kishinskiy <legunt@yandex.ru> - 0.78-5
 - add global parametr realver
 - remove BuildRequires:  p7zip, Requires: eclipse-swt
-- change %setup -q -c
+- change prep 
 
 * Tue Dec 23 2014 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 0.78-4
 - separate desktop
