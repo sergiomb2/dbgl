@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright 2014 carasin berlogue <carasin.berlogue@mail.ru> -->
+<!-- Copyright 2014 oleg kishinskiy <legunt@yandex.ru> -->
 <component type="desktop">
-​  <id>rfremix-dbgl.desktop</id>
+​  <id>dbgl.desktop</id>
 ​  <metadata_license>GPLv2</metadata_license>
 ​  <project_license>freeware</project_license>
 ​  <name>DosBox Game Launcher</name>
@@ -26,6 +26,5 @@
   </screenshots>
 
 ​  <url type="homepage">http://members.quicknet.nl/blankendaalr/dbgl</url>
-​  <developer_name>DBGL</developer_name>
-
+​  <udate_contact> oleg kishinskiy <legunt@yandex.ru> </update_contact>
 </component>
