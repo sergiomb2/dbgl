@@ -2,18 +2,24 @@
 <!-- Copyright 2014 oleg kishinskiy <legunt@yandex.ru> -->
 <component type="desktop">
 ​  <id>dbgl.desktop</id>
-​  <metadata_license>GPLv2</metadata_license>
+​  <metadata_license>GPL</metadata_license>
 ​  <project_license>free</project_license>
+  <updatecontact>legunt@yandex.ru</updatecontact>
 ​  <name>DosBox Game Launcher</name>
-​  <summary>free,multi-platform frontend for DOSBox</summary>
-  <summary xml:lang="ru">Бесплатный, мультиплатформенный фронтенд для DOSBox</summary>
+  <name xml:lang="ru"> Лаунчер для DosBox</name>
+​  <summary>multi-platform frontend for DOSBox</summary>
+  <summary xml:lang="ru">мультиплатформенный фронтенд для DOSBox</summary>
 ​
 ​  <description>
     <p>
-      DBGL: DOSBox Game Launcher DBGL: DOSBox Game Launcher is an elegant graphic interface for DOSBox, the MS-DOS emulator specialized in running old games. DGBL lets you manage all of your titles with a comfortable, attractive, and highly functional interface. 
+      DOSBox Game Launcher DBGL is an elegant graphic interface for DOSBox, the MS-DOS
+      emulator specialized in running old games, DGBL lets you manage all of your titles
+      with a comfortable, attractive, and highly functional interface. 
     </p>
     <p xml:lang="ru">
-      DBGL: DOSBox Game Launcher DBGL: DOSBox Game Launcher-это элегантный графический интерфейс для DOSBox, MS-DOS эмулятор специализированный в запуске старых игр. DGBL позволяет Вам управлять всеми своими тайтлами с удобным, привлекательным и очень функциональным интерфейсом.
+      DOSBox Game Launcher DBGL - это элегантный графический интерфейс для DOSBox, MS-DOS
+      эмулятор специализированный в запуске старых игр, DGBL позволяет Вам управлять всеми
+      своими тайтлами с удобным, привлекательным и очень функциональным интерфейсом.
     </p>
 ​  </description>
 
@@ -27,5 +33,5 @@
 
 ​  <url type="homepage">http://members.quicknet.nl/blankendaalr/dbgl</url>
 
-​  <update_contact>legunt@yandex.ru</update_contact>
+​  
 </component>
