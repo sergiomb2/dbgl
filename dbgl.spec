@@ -24,7 +24,7 @@ Source0:        http://members.quicknet.nl/blankendaalr/dbgl/download/src%{realv
 Source1:        %{name}.desktop
 Source2:        %{name}.png
 Source3:        %{name}
-Source4:        rfremix-%{name}.appdata.xml
+Source4:        %{name}.appdata.xml
 
 %description
 DBGL is a Java front-end for DOSBox, based largely upon the proven
@@ -66,13 +66,13 @@ desktop-file-install %{SOURCE1} --dir %{buildroot}%{_datadir}/applications
 # Install appstream data
 %if 0%{?fedora} >= 20
     mkdir -p %{buildroot}%{_datadir}/appdata
-    install -pm 644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/rfremix-%{name}.appdata.xml
+    install -pm 644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %endif
 
 
 %check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/rfremix-%{name}.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %files
 %{_bindir}/%{name}
@@ -80,7 +80,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/rfremix-%{
 %{_datadir}/pixmaps/*.png
 %{_datadir}/applications/%{name}.desktop
 %if 0%{?fedora} >= 20
-    %{_datadir}/appdata/rfremix-%{name}.appdata.xml
+    %{_datadir}/appdata/%{name}.appdata.xml
 %endif
 
 
