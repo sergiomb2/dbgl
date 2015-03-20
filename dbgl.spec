@@ -2,9 +2,10 @@ Name:			dbgl
 Summary:	        DOSBox Game Launcher
 URL:			http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
 Version:		0.79
-Release:		2%{?dist}
+Release:		3%{?dist}
 BuildArch:		noarch
 License:		GPLv2
+BuildRequires:  ant
 BuildRequires:	eclipse-swt
 BuildRequires:	hsqldb
 BuildRequires:	jpackage-utils
@@ -80,6 +81,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
 %{_datadir}/applications/%{name}.desktop
 
 %changelog
+* Fri Mar 20 2015 Oleg Kishinskiy <legunt@yandex.ru> - 0.79-3
+- add ant for BuildRequires
+
 * Fri Mar 20 2015 Oleg Kishinskiy <legunt@yandex.ru> - 0.79-2
 - FIX change category
 
