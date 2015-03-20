@@ -1,30 +1,29 @@
-%global realver 078
-Name:           dbgl
-Summary:        DOSBox Game Launcher
-URL:            http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
-Version:        0.78
-Release:        5%{?dist}
-BuildArch:      noarch
-License:        GPLv2
-BuildRequires:  eclipse-swt
-BuildRequires:  hsqldb
-BuildRequires:  jpackage-utils
-BuildRequires:  unzip
-BuildRequires:  xerces-j2
-BuildRequires:  liboil
-BuildRequires:  desktop-file-utils
-BuildRequires:  ant
-Requires:       dosbox >= 0.70
-Requires:       hsqldb
-Requires:       java >= 1:1.7.0
-Requires:       jpackage-utils
-Requires:       SDL_net
-Requires:       SDL_sound
-Source0:        http://members.quicknet.nl/blankendaalr/dbgl/download/src%{realver}.zip
-Source1:        %{name}.desktop
-Source2:        %{name}.png
-Source3:        %{name}
-Source4:        %{name}.appdata.xml
+Name:			dbgl
+Summary:	        DOSBox Game Launcher
+URL:			http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
+Version:		0.79
+Release:		2%{?dist}
+BuildArch:		noarch
+License:		GPLv2
+BuildRequires:	eclipse-swt
+BuildRequires:	hsqldb
+BuildRequires:	jpackage-utils
+BuildRequires:	p7zip
+BuildRequires:	unzip
+BuildRequires:	xerces-j2
+BuildRequires:	liboil
+BuildRequires: desktop-file-utils
+Requires:		dosbox >= 0.70
+Requires:		eclipse-swt
+Requires:		hsqldb
+Requires:               java >= 1:1.7.0
+Requires:               java-headless >= 1:1.7.0
+Requires:		jpackage-utils
+Requires:		SDL_net
+Requires:		SDL_sound
+Source0:		http://members.quicknet.nl/blankendaalr/dbgl/download/src079.zip
+Source2:		%{name}.png
+Source3:		%{name}
 
 %description
 DBGL is a Java front-end for DOSBox, based largely upon the proven
@@ -35,11 +34,11 @@ the product is somewhat usable as it is. Please bear in mind that
 the interface is still quite rough around the edges.
 
 %prep
-%setup -q -c
+%setup -c
 
 %build
 ant
-tar -xf ./dist/dbgl%{realver}_generic.tar.gz
+tar -xf ./dist/dbgl079_generic.tar.gz
 
 %install
 
@@ -53,7 +52,7 @@ done
 
 # startscript
 mkdir -p %{buildroot}%{_bindir}
-install -m 755 %{SOURCE3} %{buildroot}%{_bindir}
+install -m 775 %{SOURCE3} %{buildroot}%{_bindir}
 
 # icons
 mkdir %{buildroot}%{_datadir}/pixmaps
@@ -61,41 +60,32 @@ install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/
 
 # menu
 mkdir -p %{buildroot}%{_datadir}/applications
-desktop-file-install %{SOURCE1} --dir %{buildroot}%{_datadir}/applications
+cat > %{buildroot}%{_datadir}/applications/%{name}.desktop <<EOF
+[Desktop Entry]
+Type=Application
+Exec=dbgl
+Icon=dbgl
+Terminal=false
+Name=DOSBox Game Launcher
+Comment=%{summary}
+Categories=Game;
+EOF
 
-# Install appstream data
-%if 0%{?fedora} >= 20
-    mkdir -p %{buildroot}%{_datadir}/appdata
-    install -pm 644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
-%endif
-
-
-%check
 desktop-file-validate %{buildroot}%{_datadir}/applications/%{name}.desktop
-appstream-util validate-relax --nonet %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
 %files
 %{_bindir}/%{name}
 %{_javadir}/%{name}
 %{_datadir}/pixmaps/*.png
 %{_datadir}/applications/%{name}.desktop
-%if 0%{?fedora} >= 20
-    %{_datadir}/appdata/%{name}.appdata.xml
-%endif
-
 
 %changelog
-* Mon Dec 29 2014 Oleg Kishinskiy <legunt@yandex.ru> - 0.78-6
-- add appstream data
+* Fri Mar 20 2015 Oleg Kishinskiy <legunt@yandex.ru> - 0.79-2
+- FIX change category
 
-* Tue Dec 23 2014 Oleg Kishinskiy <legunt@yandex.ru> - 0.78-5
-- add global parametr realver
-- remove BuildRequires:  p7zip, Requires: eclipse-swt
-- change prep 
-
-* Tue Dec 23 2014 Igor Gnatenko <i.gnatenko.brain@gmail.com> - 0.78-4
-- separate desktop
-- fix perms in bindir
+* Fri Mar 20 2015 Oleg Kishinskiy <legunt@yandex.ru> - 0.79-1
+- update for new vertion
+- change category
 
 * Tue Dec 23 2014 Oleg Kishinskiy <legunt@yandex.ru> - 0.78-3
 - fix spec to install from source
