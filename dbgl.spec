@@ -39,7 +39,7 @@ the interface is still quite rough around the edges.
 
 %build
 ant
-tar -xf ./dist/dbgl079_generic.tar.gz
+tar -xf ./dist/dbgl080_generic.tar.gz
 
 %install
 
