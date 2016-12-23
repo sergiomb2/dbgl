@@ -79,12 +79,12 @@ ant distlinux
 %install
 install -dm 755 %{buildroot}%{_javadir}/%{name}/
 %ifarch x86_64
-    tar xvf dist/dbgl080_64bit.tar.gz -C %{buildroot}/%{_javadir}/%{name}/
+    tar xvf dist/dbgl080_64bit.tar.gz -C %{buildroot}%{_javadir}/%{name}/
 %else
-    %ifarch i686
-        tar xvf dist/dbgl080.tar.gz -C %{buildroot}/%{_javadir}/%{name}/
+    %ifarch %{ix86}
+        tar xvf dist/dbgl080.tar.gz -C %{buildroot}%{_javadir}/%{name}/
     %else
-        tar xvf dist/dbgl080_generic.tar.gz -C %{buildroot}/%{_javadir}/%{name}/
+        tar xvf dist/dbgl080_generic.tar.gz -C %{buildroot}%{_javadir}/%{name}/
     %endif
 %endif
 
@@ -110,6 +110,8 @@ desktop-file-install                               \
 
 install -D -p -m 0644 %{SOURCE2} \
     %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+
+%check
 appstream-util validate-relax --nonet \
     %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
