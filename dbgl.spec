@@ -67,6 +67,13 @@ build-jar-repository -p lib commons-lang3 hsqldb swt \
 #    glassfish-hk2-configuration glassfish-hk2/hk2-metadata-generator \
 #    glassfish-hk2-hk2
 
+# fix build.xml to set jar classpath with (unbundle) system libraries
+sed -i build.xml -e s'#excludes="swt\*.jar"#excludes="swt*.jar \
+    commons-io*.jar commons-lang3*.jar hsqldb*.jar"#'
+sed -i build.xml -e s'#class-path}#class-path} /usr/share/java/commons-io.jar \
+    /usr/share/java/commons-lang3.jar /usr/share/java/hsqldb.jar \
+    /usr/lib/java/swt.jar#'
+#cat build.xml
 ant distlinux
 
 %install
@@ -82,12 +89,8 @@ install -dm 755 %{buildroot}%{_javadir}/%{name}/
 %endif
 
 # use symbol links to system libraries
-pushd %{buildroot}/%{_javadir}/%{name}/lib
-ln -s $(build-classpath commons-lang3)
-ln -s $(build-classpath hsqldb)
-ln -s $(build-classpath swt)
-ln -s $(build-classpath commons-io)
-popd
+#build-jar-repository -s -p %{buildroot}/%{_javadir}/%{name}/lib commons-io \
+#    commons-lang3 hsqldb swt
 
 # startscript
 mkdir -p %{buildroot}%{_bindir}
