@@ -4,7 +4,7 @@ Name:           dbgl
 Summary:        DOSBox Game Launcher
 URL:            http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
 Version:        0.80
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPLv2
 BuildRequires:  ant
 BuildRequires:  eclipse-swt
@@ -123,6 +123,13 @@ appstream-util validate-relax --nonet \
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
+* Fri Dec 23 2016 Sérgio Basto <sergio@serjux.com> - 0.80-3
+- set jar classpath with (unbundle) system libraries (instead use symbol links)
+- gnatenkobrain review:
+  - btw, you can remove / between %{buildroot} and others.
+  - probably you meant %{ix86}
+  - to %check please
+
 * Mon Dec 19 2016 Sérgio Basto <sergio@serjux.com> - 0.80-2
 - Bump release
 - Use external .desktop file easier to send to upstream
