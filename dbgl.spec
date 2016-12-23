@@ -4,7 +4,7 @@ Name:           dbgl
 Summary:        DOSBox Game Launcher
 URL:            http://home.quicknet.nl/qn/prive/blankendaalr/dbgl/
 Version:        0.80
-Release:        2%{?dist}
+Release:        3%{?dist}
 License:        GPLv2
 BuildRequires:  ant
 BuildRequires:  eclipse-swt
@@ -67,27 +67,30 @@ build-jar-repository -p lib commons-lang3 hsqldb swt \
 #    glassfish-hk2-configuration glassfish-hk2/hk2-metadata-generator \
 #    glassfish-hk2-hk2
 
+# fix build.xml to set jar classpath with (unbundle) system libraries
+sed -i build.xml -e s'#excludes="swt\*.jar"#excludes="swt*.jar \
+    commons-io*.jar commons-lang3*.jar hsqldb*.jar"#'
+sed -i build.xml -e s'#class-path}#class-path} /usr/share/java/commons-io.jar \
+    /usr/share/java/commons-lang3.jar /usr/share/java/hsqldb.jar \
+    /usr/lib/java/swt.jar#'
+#cat build.xml
 ant distlinux
 
 %install
 install -dm 755 %{buildroot}%{_javadir}/%{name}/
 %ifarch x86_64
-    tar xvf dist/dbgl080_64bit.tar.gz -C %{buildroot}/%{_javadir}/%{name}/
+    tar xvf dist/dbgl080_64bit.tar.gz -C %{buildroot}%{_javadir}/%{name}/
 %else
-    %ifarch i686
-        tar xvf dist/dbgl080.tar.gz -C %{buildroot}/%{_javadir}/%{name}/
+    %ifarch %{ix86}
+        tar xvf dist/dbgl080.tar.gz -C %{buildroot}%{_javadir}/%{name}/
     %else
-        tar xvf dist/dbgl080_generic.tar.gz -C %{buildroot}/%{_javadir}/%{name}/
+        tar xvf dist/dbgl080_generic.tar.gz -C %{buildroot}%{_javadir}/%{name}/
     %endif
 %endif
 
 # use symbol links to system libraries
-pushd %{buildroot}/%{_javadir}/%{name}/lib
-ln -s $(build-classpath commons-lang3)
-ln -s $(build-classpath hsqldb)
-ln -s $(build-classpath swt)
-ln -s $(build-classpath commons-io)
-popd
+#build-jar-repository -s -p %{buildroot}/%{_javadir}/%{name}/lib commons-io \
+#    commons-lang3 hsqldb swt
 
 # startscript
 mkdir -p %{buildroot}%{_bindir}
@@ -107,6 +110,8 @@ desktop-file-install                               \
 
 install -D -p -m 0644 %{SOURCE2} \
     %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
+
+%check
 appstream-util validate-relax --nonet \
     %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 
@@ -118,6 +123,13 @@ appstream-util validate-relax --nonet \
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
+* Fri Dec 23 2016 Sérgio Basto <sergio@serjux.com> - 0.80-3
+- set jar classpath with (unbundle) system libraries (instead use symbol links)
+- gnatenkobrain review:
+  - btw, you can remove / between %{buildroot} and others.
+  - probably you meant %{ix86}
+  - to %check please
+
 * Mon Dec 19 2016 Sérgio Basto <sergio@serjux.com> - 0.80-2
 - Bump release
 - Use external .desktop file easier to send to upstream
